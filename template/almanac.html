@@ -1,0 +1,62 @@
+<div class="container" style="margin-top:20px">
+    <div class="col-sm-4 offset-md-4">
+
+        <h1>Fruit Almanac</h1>
+    </div>
+    <div class="container" style="margin-top: 20 ">
+        <div class="row offset-md-3">
+            <div class="col-md-3">
+                <div class="card bg-success" style="width : 90% ; height: 90%">
+                    <div class="card-body text-center">
+                        <img class="rounded-circle w-36 mx-auto d-block card-img-top" id="image" src="{{ fruit[0]["image"] }}"
+                            style="height: 90%;width: 100%">
+                        <form>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <table class="table">
+                    <tr>
+                        <td>Name</td>
+                        <td>:</td>
+                        <td>
+                            <span id="name">{{ fruit[0]["name"] }}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Latin</td>
+                        <td>:</td>
+                        <td>
+                            <span id="latin">{{ fruit[0]["latin"] }}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Color</td>
+                        <td>:</td>
+                        <td>
+                            <span id="color">{{ fruit[0]["color"] }}</span>
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top:20px; margin-right:25%;margin-left: 28%">
+        <div class="col-md-4">
+            <input type="button" style="width: 150px" onclick="add()" class="btn btn-block btn-primary"
+                value="previous">
+        </div>
+        <div class="col-md-4 offset-md-1">
+            <input type="button" style="width: 150px" onclick="loadFruit(true)" class="btn btn-block btn-success"
+                value="next"> </div>
+
+
+    </div>
+</div>
+<script>
+    function add(){
+        
+    }
+</script>

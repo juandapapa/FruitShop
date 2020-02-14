@@ -1,0 +1,50 @@
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 offset-md-1"><img class="rounded-circle w-50 mx-auto d-block" src="images/wiro.jpg">
+            </div>
+            <div class="col-md-8">
+                <h1>Wiro Sableng</h1>
+                <h2><span class="typing-effect"></span></h2>
+                <p>Well, I am a hero of finggers and working as a software developer.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <h3>Lastest status</h3>
+            <p class="font-weight-bold">{{ lastStatus["text"] }}</p>
+            <p><span class="small font-italic">{{ lastStatus["published_at"] }}</span></p>
+        </div>
+        <div class="col-md-5">
+            <div class="row">
+                <div class="col-md-4">
+                    <img class="img-fluid rounded-circle" src="{{ mostVotedFruit["image"] }}">
+                </div>
+                <div class="col-md-8">
+                    <h3>Most voted fruit</h3>
+                    <p><span>{{ mostVotedFruit["name"] }}</span> is the most voted fruit. The latin name of this fruit
+                        is <i><span>{{ mostVotedFruit["latin"] }}</span></i>.
+                        We can find this kind of fruit in <span>{{ mostVotedFruit["color"] }}</span>. It gets
+                        <span>{{ mostVotedFruit["votes"] }}</span> votes.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-md-4">
+                    <img class="img-fluid rounded-circle" src="{{ latestAddedFruit["image"] }}">
+                </div>
+                <div class="col-md-8">
+                    <h3>{{ latestAddedFruit["name"] }} <span class="badge badge-primary">New</span></h3>
+                    <p>Welcome to the competition! The latin name of this fruit is
+                        <i><span>{{ latestAddedFruit["latin"] }}</span></i>.
+                        We can find this kind of fruit in <span>{{ latestAddedFruit["color"] }}</span>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

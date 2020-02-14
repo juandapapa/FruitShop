@@ -1,0 +1,21 @@
+    <div class="container text-center" style="margin-top:20px">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <form action="action_login.php" method="post">
+                    <img class="rounded-circle w-50 mx-auto d-block" src="images/wiro.jpg">
+                    <h1 class="h3 mb-3 font-weight-normal">Please enter your credential</h1>
+                    <input type="email" name="email" class="form-control" placeholder="Email" required autofocus>
+                    <input type="password" name="password" class="form-control" style="margin-top:10px"
+                        placeholder="Password" required>
+                    <div class="checkbox mb-3">
+                        <label>
+                            <input type="checkbox" name="remember" value="remember-me" style="margin-top:10px"> Remember me
+                        </label>
+                    </div>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+                    <span>Do not have account? <a href="register.php">Register here.</a></span>
+                    <input type="hidden" name="action" value="login">
+                </form>
+            </div>
+        </div>
+    </div>

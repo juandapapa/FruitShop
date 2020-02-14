@@ -1,0 +1,61 @@
+<div class="container" style="margin-top:20px">
+    <div class="row">
+        <div class="col-md-3">
+            <img class="rounded-circle w-50 mx-auto d-block" src="images/wiro.jpg"> </div>
+        <div class="col-md-9">
+            <h1>Customer Testimonials</h1>
+            <h3>What the customer says about me?</h3>
+        </div>
+    </div>
+</div>
+<div class="container" style="margin-top:20px">
+    <div class="row">
+        {% if loggedIn %}
+        <div class="col-md-12">
+            {% else %}
+            <div class="col-md-9">
+                {% endif %}
+
+                <div class="card-group">
+
+                    <div class="card bg-primary">
+                        <div class="card-body text-center">
+                            <h4 class="card-title">{{ testimonial[2]["full_name"] }}</h4>
+                            <img class="rounded-circle w-50 mx-auto d-block card-img-top"
+                                src="{{ testimonial[2]["image"] }}">
+                            <p class="card-text font-weight-bold">{{ testimonial[2]["text"] }}</p>
+                        </div>
+                    </div>
+                    <div class="card bg-warning">
+                        <div class="card-body text-center">
+                            <h4 class="card-title">{{ testimonial[1]["full_name"] }}</h4>
+                            <img class="rounded-circle w-50 mx-auto d-block card-img-top"
+                                src="{{ testimonial[1]["image"] }}">
+                            <p class="card-text font-weight-bold">{{ testimonial[1]["text"] }}</p>
+                        </div>
+                    </div>
+                    <div class="card bg-success">
+                        <div class="card-body text-center">
+                            <h4 class="card-title">{{ testimonial[0]["full_name"] }}</h4>
+                            <img class="rounded-circle w-50 mx-auto d-block card-img-top"
+                                src="{{ testimonial[0]["image"] }}">
+                            <p class="card-text font-weight-bold">{{ testimonial[0]["text"] }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% if not loggedIn %}
+            <div class="col-md-3">
+                <form method="post" action="add_testimony.php" enctype="multipart/form-data">
+                    <input type="text" class="form-control" placeholder="Name" name="full_name">
+                    <input type="text" class="form-control" placeholder="Email" name="email" style="margin-top: 10px;">
+                    <textarea rows="2" class="form-control" style="margin-top: 10px;" name="text"></textarea>
+                    <input type="file" class="form-control-file" style="margin-top: 10px;" name="image">
+
+                    <input class="btn btn-success btn-block" type="submit" value="Send testimonial"
+                        style="margin-top: 10px;">
+                </form>
+            </div>
+            {% endif %}
+        </div>
+    </div>

@@ -1,0 +1,51 @@
+<div class="container" style="margin-top:20px">
+    <div class="row">
+        <div class="col-md-3">
+            <img class="rounded-circle w-50 mx-auto d-block" src="images/wiro.jpg"> </div>
+        <div class="col-md-9">
+            <h1>Shop</h1>
+            <h3>Buy the best fruit from the best shop</h3>
+        </div>
+    </div>
+</div>
+<div class="container" style="margin-top:10px">
+    <div class="card-group">
+        {% for fruit in fruits %}
+        <div class="card">
+            <div class="card-body text-center">
+                <h4 class="card-title">
+                    {{ fruit['name'] }}
+                </h4>
+                <img class="rounded-circle w-50 mx-auto d-block card-img-top" src="{{ fruit['image'] }}">
+                <p class="card-text font-weight-bold">
+                    ${{ fruit['price'] }}/item |
+                    {% if fruit['stock'] == 0 %}
+                    out of stock.
+                    {% elseif fruit['stock'] > 10 %}
+                    in stock.
+                    {% else %}
+                    {{ fruit['stock'] }} left.
+                    {% endif %}
+                </p>
+                <p>Badges:
+                    {% if fruit['id'] == mostVotedFruit %}
+                    <span class="badge badge-primary">Most Voted</span>
+                    {% else %}
+                    None
+                    {% endif %}
+                </p>
+                {% if loggedIn and not loggedInUser['owner'] %}
+                <p>In your chart: {{ fruit['in_cart'] }} item(s).</p>
+                {% endif %}
+                {% if loggedIn and not loggedInUser['owner'] %}
+                <form action="add_to_cart.php" method="post">
+                    <input type="hidden" name="added_fruit" value="{{ fruit['id'] }}">
+                    <input type="submit" class="btn btn-success btn-block" value="Add to cart"
+                        {{ (fruit['stock'] and fruit['stock'] > fruit['in_cart'])? '' : 'disabled' }}>
+                </form>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>

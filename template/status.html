@@ -1,0 +1,71 @@
+<div class="container" style="margin-top:20px">
+    <div class="row">
+        <div class="col-md-4 offset-md-1">
+            <h1 class="text-center">Wiro Sableng</h1>
+            <img class="rounded-circle w-50 mx-auto d-block" src="images/wiro.jpg">
+            <p class="text-center">
+                I live in Java island, Indonesia. FruitLapak is my startup
+                that focus on developing fruit-related software.
+                It is green and delicious.
+            </p>
+        </div>
+        <div class="col-md-6">
+            {% if loggedIn %}
+            <form method="post" action="add_status.php">
+                <div class="row">
+                    <div class="col-md-12">
+                        <textarea name="text" class="form-control" rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 10px;">
+                    <div class="col-md-3 offset-md-9">
+                        <input class="btn btn-success btn-block" type="submit" value="Post">
+                    </div>
+                </div>
+            </form>
+            {% endif %}
+
+            <div id="statuses">
+                {% for status in statuses %}
+                <div class="row">
+                    <div class="col-md-12">
+                        <hr>
+                        <p>{{ status["text"] }}
+                            <span class="small font-italic">
+                                {{ status["published_at"] }}
+                            </span>
+                        </p>
+                        
+                        {% for comment in comments %}
+                        {% if comment["status"] == status["id"] %}
+                        <p>{{ comment["text"] }}
+                            <span class="small font-italic">
+                                {{ comment["published_at"] }}
+                            </span>
+                        </p>
+                        {% endif %}
+                        {% endfor %}
+
+                        {% if loggedIn %}
+                        <form method="post" action="add_comment.php">
+                            <input type="hidden" name="pengirim" value="{{ loggedInUser['email'] }}">
+                            <input type="hidden" name="idStatus" value="{{ status['id'] }}">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <textarea name="text" class="form-control" rows="3"></textarea>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 10px;">
+                                <div class="col-md-3 offset-md-9">
+                                    <input class="btn btn-success btn-block" type="submit" value="Comment">
+                                </div>
+                            </div>
+                        </form>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

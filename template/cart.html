@@ -1,0 +1,63 @@
+<div class="container" style="margin-top:20px">
+    <div class="row">
+        <div class="col-md-3">
+            <img class="rounded-circle w-50 mx-auto d-block" src="images/wiro.jpg"> </div>
+        <div class="col-md-9">
+            <h1>Payment</h1>
+            <h3>Following is the detail of your payment.</h3>
+        </div>
+    </div>
+</div>
+<div class="container" style="margin-top:10px">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <table class="table table-bordered">
+                <thead class="table-primary font-weight-bold">
+                    <tr>
+                        <td>#</td>
+                        <td>Name</td>
+                        <td>Latin</td>
+                        <td>Price</td>
+                        <td>Qty</td>
+                        <td>Ready</td>
+                        <td>Total Price</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for fruit in fruits %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ fruit['name'] }}</td>
+                        <td>{{ fruit['latin'] }}</td>
+                        <td>
+                            $ {{ fruit['price']|number_format(2, '.', ',') }}
+                        </td>
+                        <td class="text-right">{{ fruit['qty'] }}</td>
+                        <td>{{ fruit['ready_str'] }}</td>
+                        <td class="text-right">
+                            $ {{ fruit['total_price']|number_format(2, '.', ',') }}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    <tr class="table-primary font-weight-bold">
+                        <td colspan="5">Total</td>
+                        <td>{{ summary['qty'] }} items</td>
+                        <td class="text-right">
+                            $ {{ summary['price']|number_format(2, '.', ',') }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <form action="action_payment.php" method="post">
+                <div class="row">
+                    <div class="col-md-3 offset-md-5">
+                        <input type="submit" name="cancel" class="btn btn-block" value="Cancel">
+                    </div>
+                    <div class="col-md-3 offset-md-1">
+                        <input type="submit" name="pay" class="btn btn-block btn-primary" value="Pay">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

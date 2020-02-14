@@ -1,0 +1,79 @@
+<div class="container" style="margin-top:20px">
+    <div class="row">
+        <div class="col-md-3">
+            <img class="rounded-circle w-50 mx-auto d-block" src="images/wiro.jpg"> </div>
+        <div class="col-md-9">
+            <h1>Fruit Voting</h1>
+            <h3>According to you, which one of the following fruit is the best?
+            </h3>
+        </div>
+    </div>
+</div>
+<div class="container" style="margin-top:20px">
+    <div class="card-group">
+        <div class="card bg-primary">
+            <div class="card-body text-center">
+                <h4 class="card-title">
+                    {{ result[0]["name"] }}
+                </h4>
+                <img class="rounded-circle w-50 mx-auto d-block card-img-top" src="{{ result[0]["image"] }}">
+                <p class="card-text font-weight-bold">
+                    {{ result[0]["vote"] }} votes</p>
+                {% if not loggedIn %}
+                <form action="vote.php" method="post">
+                    <input type="hidden" name="voted_fruit" value="{{ result[0]["id"] }}">
+                    <input type="submit" class="btn btn-danger btn-block" value="Vote!">
+                </form>
+                {% endif %}
+            </div>
+        </div>
+        <div class="card bg-warning">
+            <div class="card-body text-center">
+                <h4 class="card-title">
+                    {{ result[1]["name"] }}
+                </h4>
+                <img class="rounded-circle w-50 mx-auto d-block card-img-top" src="{{ result[1]["image"] }}">
+                <p class="card-text font-weight-bold">
+                    {{ result[1]["vote"] }} votes</p>
+                {% if not loggedIn %}
+                <form action="vote.php" method="post">
+                    <input type="hidden" name="voted_fruit" value="{{ result[1]["id"] }}">
+                    <input type="submit" class="btn btn-success btn-block" value="Vote!">
+                </form>
+                {% endif %}
+            </div>
+        </div>
+        <div class="card bg-success">
+            <div class="card-body text-center">
+                <h4 class="card-title">
+                    {{ result[2]["name"] }}
+                </h4>
+                <img class="rounded-circle w-50 mx-auto d-block card-img-top" src="{{ result[2]["image"] }}">
+                <p class="card-text font-weight-bold">
+                    {{ result[2]["vote"] }} votes</p>
+                {% if not loggedIn %}
+                <form action="vote.php" method="post">
+                    <input type="hidden" name="voted_fruit" value="{{ result[2]["id"] }}">
+                    <input type="submit" class="btn btn-primary btn-block" value="Vote!">
+                </form>
+                {% endif %}
+            </div>
+        </div>
+        <div class="card bg-danger">
+            <div class="card-body text-center">
+                <h4 class="card-title">
+                    {{ result[3]["name"] }}
+                </h4>
+                <img class="rounded-circle w-50 mx-auto d-block card-img-top" src="{{ result[3]["image"] }}">
+                <p class="card-text font-weight-bold">
+                    {{ result[3]["vote"] }} votes</p>
+                {% if not loggedIn %}
+                <form action="vote.php" method="post">
+                    <input type="hidden" name="voted_fruit" value="{{ result[3]["id"] }}">
+                    <input type="submit" class="btn btn-info btn-block" value="Vote!">
+                </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
